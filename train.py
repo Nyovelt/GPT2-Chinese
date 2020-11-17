@@ -228,7 +228,7 @@ def main():
         if not os.path.exists(output_dir + 'model_epoch{}'.format(epoch + 1)):
             os.mkdir(output_dir + 'model_epoch{}'.format(epoch + 1))
         model_to_save = model.module if hasattr(model, 'module') else model
-        if epoch%5==1:
+        if epoch% 10 ==1:
             model_to_save.save_pretrained(output_dir + 'model_epoch{}'.format(epoch + 1))
         # torch.save(scheduler.state_dict(), output_dir + 'model_epoch{}/scheduler.pt'.format(epoch + 1))
         # torch.save(optimizer.state_dict(), output_dir + 'model_epoch{}/optimizer.pt'.format(epoch + 1))

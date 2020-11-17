@@ -1,1 +1,11 @@
-python3 .\generate.py --device 0,1 --length 20 --tokenizer_path cache/vocab_small.txt --model_path .\model\final_model  --prefix "[CLS][MASK]" --topp 1 --temperature 1.0 --nsamples 20 --save_samples --save_samples_path .\output
+python3 .\generate.py`
+ --device 0,1`
+  --length 20`
+   --tokenizer_path cache/vocab_small.txt`
+    --model_path .\model\final_model`
+      --prefix "[CLS][MASK]"`
+       --topp 1`
+        --temperature 1.0`
+         --nsamples 20`
+          --save_samples`
+           --save_samples_path .\output

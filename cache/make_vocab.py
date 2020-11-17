@@ -18,7 +18,7 @@ def main():
     print('args:\n' + args.__repr__())
     print('This script is extremely slow especially for large corpus. Take a break.')
 
-    f = open(args.raw_data_path, 'r')
+    f = open(args.raw_data_path, 'r',encoding='UTF-8')
     lines = json.load(f)
     for i, line in enumerate(tqdm(lines)):
         lines[i] = lac.cut(line, text=True)
