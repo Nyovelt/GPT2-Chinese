@@ -11,7 +11,6 @@ from tqdm import tqdm
 from torch.nn import DataParallel
 from tokenizations.bpe_tokenizer import get_encoder
 
-
 def build_files(data_path, tokenized_data_path, num_pieces, full_tokenizer, min_length):
     with open(data_path, 'r', encoding='utf8') as f:
         print('reading lines')
@@ -40,7 +39,7 @@ def build_files(data_path, tokenized_data_path, num_pieces, full_tokenizer, min_
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', default='0,1,2,3', type=str, required=False, help='设置使用哪些显卡')
+    parser.add_argument('--device', default='0,1', type=str, required=False, help='设置使用哪些显卡')
     parser.add_argument('--model_config', default='config/model_config_small.json', type=str, required=False,
                         help='选择模型参数')
     parser.add_argument('--tokenizer_path', default='cache/vocab_small.txt', type=str, required=False, help='选择词库')
@@ -229,7 +228,8 @@ def main():
         if not os.path.exists(output_dir + 'model_epoch{}'.format(epoch + 1)):
             os.mkdir(output_dir + 'model_epoch{}'.format(epoch + 1))
         model_to_save = model.module if hasattr(model, 'module') else model
-        model_to_save.save_pretrained(output_dir + 'model_epoch{}'.format(epoch + 1))
+        if epoch%5==1:
+            model_to_save.save_pretrained(output_dir + 'model_epoch{}'.format(epoch + 1))
         # torch.save(scheduler.state_dict(), output_dir + 'model_epoch{}/scheduler.pt'.format(epoch + 1))
         # torch.save(optimizer.state_dict(), output_dir + 'model_epoch{}/optimizer.pt'.format(epoch + 1))
         print('epoch {} finished'.format(epoch + 1))

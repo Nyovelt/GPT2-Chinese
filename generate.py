@@ -123,7 +123,7 @@ def generate(n_ctx, model, context, length, tokenizer, temperature=1, top_k=0, t
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--device', default='0,1,2,3', type=str, required=False, help='生成设备')
+    parser.add_argument('--device', default='0,1', type=str, required=False, help='生成设备')
     parser.add_argument('--length', default=-1, type=int, required=False, help='生成长度')
     parser.add_argument('--batch_size', default=1, type=int, required=False, help='生成的batch size')
     parser.add_argument('--nsamples', default=10, type=int, required=False, help='生成几个样本')
