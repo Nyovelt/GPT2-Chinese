@@ -1,9 +1,9 @@
 python3 .\generate.py `
  --device 0 `
   --length 20 `
-   --tokenizer_path cache\vocab_small.txt `
-    --model_path .\model\final_model `
-      --prefix "[CLS][MASK]" `
+   --tokenizer_path cache\vocab_user.txt `
+    --model_path .\model\model_epoch15000001 `
+      --prefix "Ê§°Ü" `
        --topp 1 `
         --temperature 1.0 `
          --nsamples 20 `
